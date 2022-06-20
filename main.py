@@ -18,7 +18,7 @@ def treat_list(text, k):
     return words
 
 def load_words():
-    with open('words_alpha.txt') as word_file:
+    with open('words_test.txt') as word_file:
         words = word_file.read().split()
 
     return treat_list(words, 4)
@@ -26,18 +26,17 @@ def load_words():
 def invert(w):
     return w[1:]+w[0]
 
-
 def compare_words(w1, w2):
     if w1 == w2:
-        return (False, 0)
+        return False, 0
     if len(w1) != len(w2):
-        return (False, 1)
+        return False, 1
 
     for i in range(0, len(w2)):
         if w1 == w2:
-            return (True, i)
+            return True, i
         w2 = invert(w2)
-    return (False, 2)
+    return False, 3
 
 def main():
     f = open("foundwords.txt", "a")
