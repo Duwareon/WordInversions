@@ -1,4 +1,4 @@
-#!/usr/bin/env Python3
+#!/usr/bin/env python3
 def treat_list(text, k):
      
     # create the empty list
@@ -18,7 +18,7 @@ def treat_list(text, k):
     return words
 
 def load_words():
-    with open('words_test.txt') as word_file:
+    with open('words_alpha.txt') as word_file:
         words = word_file.read().split()
 
     return treat_list(words, 4)
@@ -38,6 +38,10 @@ def compare_words(w1, w2):
         w2 = invert(w2)
     return False, 3
 
+def write(txt):
+    f = open("foundwords.txt", "a")
+    f.write(txt)
+
 def main():
     f = open("foundwords.txt", "a")
     words = load_words()
@@ -45,7 +49,7 @@ def main():
         for w2 in words:
             comp = compare_words(w1, w2)
             if comp[0]:
-                f.write("\n" + w1 + " " + w2 + " " + str(comp[1]))
+                write(w1 + " " + w2 + " " + str(comp[1]) + "\n")
                 print(w1, w2, comp[1], sep=" ")
 
 main()
