@@ -14,7 +14,7 @@ def treat_list(text, k):
             words.append(x)
              
      # return string list
-    print(len(words))
+    print(len(words), "words in list.")
     return words
 
 def load_words():
@@ -40,11 +40,13 @@ def compare_words(w1, w2):
     return (False, 2)
 
 def main():
+    f = open("foundwords.txt", "a")
     words = load_words()
     for w1 in words:
         for w2 in words:
             comp = compare_words(w1, w2)
             if comp[0]:
+                f.write("\n" + w1 + " " + w2 + " " + str(comp[1]))
                 print(w1, w2, comp[1], sep=" ")
 
 main()
